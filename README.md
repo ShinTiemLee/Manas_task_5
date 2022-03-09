@@ -3,7 +3,7 @@
 *Game Of Tic Tac Toe in c++* 
 
 
-_`Denined functions:`_
+_`Defined functions:`_
 
 void rules()    :- Dispalys the rules of the game and assigns name to Player 1 and 2. Also makes sure no rewriting on a tile occurs.
 
