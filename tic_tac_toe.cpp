@@ -43,10 +43,10 @@ void mat()        //Displays the configuration of the game
 void match(char player1[],char player2[])       //Executes the match once
 {
     int no_of_turns=0;
-    int turns=0;
-    int pos,index=0,toggle=0;
+    int turns=0;                        //swtiching variable to change players' turn 
+    int pos,index=0,toggle=0;           
     int check_repeat[9];
-    while (no_of_turns<9)
+    while (no_of_turns<9)              // loop for maximum number of turns per game i.e '9'
     {
      switch(turns)
      {
@@ -92,7 +92,7 @@ void grid(int pos, int turns, char player1[], char player2[])        //Changes a
     else 
       var='O';  
     
-    switch(pos)
+    switch(pos)      // Changes the tile(element in matrix) as per player input 
         {
             case 1: arr[0][0]=var;
                     break;
@@ -135,7 +135,7 @@ void grid(int pos, int turns, char player1[], char player2[])        //Changes a
 void result(char arr[3][3],char player1[],char player2[])      //Checks win condition and terminates on achieving win condition
 {
     int j=0;
-    for(int i=0;i<3;i++)
+    for(int i=0;i<3;i++)          //Checks for horizonatl and vertical win condition
     {
       if(((arr[i][j]==arr[i][j+1])&&(arr[i][j+1]==arr[i][j+2]))&&(arr[i][j]=='X'))
        {
@@ -162,7 +162,7 @@ void result(char arr[3][3],char player1[],char player2[])      //Checks win cond
        }
 
     }
-
+     //checks for diagonal win condition
     if(((arr[0][0]==arr[1][1])&&(arr[1][1]==arr[2][2]))&&(arr[1][1]=='X'))
        {
            cout<<"***************"<<player1<<" is the winner**********************";
