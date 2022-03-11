@@ -13,7 +13,9 @@
 _Make a project with above files in CMake to play the game by cloning the repository_
 
 
-- _`Defined functions:`_
+
+
+ _`Defined functions:`_
 
 * void rules()    :- Dispalys the rules of the game and assigns name to Player 1 and 2. Also makes sure no rewriting on a tile occurs.
 
@@ -26,7 +28,9 @@ _Make a project with above files in CMake to play the game by cloning the reposi
 * void result()   :- Checks win condition and terminates game if win condition is satisfied.
 
 
-- _` IMP Variables:`_
+
+
+ _` IMP Variables:`_
 
 * turns=             Var to choose which player's turn to play
 
