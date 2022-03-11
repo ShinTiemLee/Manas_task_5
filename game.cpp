@@ -1,7 +1,8 @@
 #include "iostream"
 #include "conio.h"
-#include "stdio.h"
+#include "dos.h"
 #include "game.h"
+#include "string.h"
 
 using namespace std;
 static char arr[3][3]={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
@@ -46,12 +47,27 @@ void tictactoe :: match()       //Executes the match once
      switch(turns)
      {
          case 0: cout<<"\n<--"<<player1<<"'s turn---> \n\n"<<"Enter the position to mark: ";
-                 cin>>pos;
+                 if(cin>>pos)
+                 {;}
+                 else
+                 {
+                    cin.clear(); 
+                    cin.ignore();
+                    continue;
+                 }
                  break;  
          
          case 1: cout<<"\n<--"<<player2<<"'s turn---> \n\n"<<"Enter the position to mark: ";
-                 cin>>pos;
-                 break;                  
+                 if(cin>>pos)
+                 {;}
+                 else
+                 {
+                    cin.clear(); 
+                    cin.ignore();
+                    continue;
+                 }
+                 break; 
+         default: break;                         
      }
      for(int k=0;k<index;k++)                                         // No rewriting on tile is allowed,player is asked to try again
      {
@@ -75,10 +91,13 @@ void tictactoe :: match()       //Executes the match once
      check_repeat[index]=pos;
      index++;
      grid(pos,turns,player1,player2);
+     result();
      turns=!turns;
      no_of_turns++;
     }
     cout<<"\n ------------------Draw----------------";
+    for(int delay=0;delay<32000;delay++)
+    for(int d=0;d<32000;d++){};
     exit(0);
 }
 
@@ -118,6 +137,8 @@ void tictactoe :: grid(int pos, int turns, char player1[], char player2[])      
 
             case 9: arr[2][2]=var;
                     break;
+            default: break;
+                    
               
         }
     for(int i=0;i<3;i++)
@@ -129,7 +150,7 @@ void tictactoe :: grid(int pos, int turns, char player1[], char player2[])      
     }
 }
  
-void tictactoe :: result()      //Checks win condition and terminates on achieving win condition
+/*void tictactoe :: result()      //Checks win condition and terminates on achieving win condition
 {
     int j=0;
     for(int i=0;i<3;i++)          //Checks for horizonatl and vertical win condition
@@ -183,5 +204,39 @@ void tictactoe :: result()      //Checks win condition and terminates on achievi
            cout<<"***************"<<player2<<" is the winner**********************";
            exit(0);
        }      
-}
+} */
 
+void tictactoe :: result()
+{
+    char cmp1[3],cmp2[3],cmp3[3],cmp4[3];
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            cmp1[j]=char(arr[i][j]);
+            cmp2[j]=arr[j][i];
+            if(i==j)
+            cmp3[j]=arr[i][j];
+            if(i+j==2)
+            cmp4[j]=arr[i][2-i];
+            
+        }
+     if ((cmp1[0]=='X' && cmp1[1]=='X' && cmp1[2]=='X') ||(cmp2[0]=='X' && cmp2[1]=='X' && cmp2[2]=='X') || (cmp3[0]=='X' && cmp3[1]=='X' && cmp3[2]=='X') || (cmp4[0]=='X' && cmp4[1]=='X' && cmp4[2]=='X'))
+     {
+           cout<<"***************"<<player1<<" is the winner**********************";
+           for(int delay=0;delay<32000;delay++)
+            for(int d=0;d<32000;d++){};
+           exit(0);
+     }  
+     else  if ((cmp1[0]=='O' && cmp1[1]=='O' && cmp1[2]=='O') ||(cmp2[0]=='O' && cmp2[1]=='O' && cmp2[2]=='O') || (cmp3[0]=='O' && cmp3[1]=='O' && cmp3[2]=='O') || (cmp4[0]=='O' && cmp4[1]=='O' && cmp4[2]=='O'))
+     {
+           cout<<"***************"<<player2<<" is the winner**********************";
+           for(int delay=0;delay<32000;delay++)
+            for(int d=0;d<32000;d++){};
+           exit(0);
+     }  
+    
+    }
+
+
+}

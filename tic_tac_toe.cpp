@@ -10,7 +10,6 @@ int main()
     tictactoe play;
     play.rules();
     play.match();
-    play.result();
     getch();
     return 0;
 }
